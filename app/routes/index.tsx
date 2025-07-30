@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import { data, href, Link } from "react-router";
+import { data, href, Link, useNavigation } from "react-router";
 import { Form } from "react-router";
-=======
-import { data, Form, useNavigation } from "react-router";
->>>>>>> 3a7be4a (implement components and pending ui parts)
 import { useTranslation } from "react-i18next";
 import type { Route } from "./+types";
 import { getInstance } from "~/middleware/i18next";
