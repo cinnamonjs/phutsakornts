@@ -1,0 +1,1 @@
+import{w as s,j as t}from"./chunk-NL6KNZEE-BMbPM_1L.js";import{u as o}from"./useTranslation-B2mFGTGw.js";const a=s(function(){let{t:n}=o("translation",{keyPrefix:"notFound"});return t.jsxs("div",{style:{fontFamily:"system-ui, sans-serif",lineHeight:"1.8"},children:[t.jsx("h1",{children:n("title")}),t.jsx("p",{children:n("description")})]})});export{a as default};
