@@ -8,7 +8,7 @@ right way.** None mean write more code — see guardrail at bottom.
 ## S — Single Responsibility
 
 Module should have one reason to change. In React usual smells: component that
-fetches *and* renders *and* formats, or hook that owns three unrelated concerns.
+fetches _and_ renders _and_ formats, or hook that owns three unrelated concerns.
 
 **Before** — fetching, formatting, rendering all change this file:
 
@@ -16,10 +16,21 @@ fetches *and* renders *and* formats, or hook that owns three unrelated concerns.
 export function UserCard({ userId }: { userId: string }) {
   const [user, setUser] = useState<User | null>(null)
   useEffect(() => {
-    fetch(`/api/users/${userId}`).then((r) => r.json()).then(setUser)
+    fetch(`/api/users/${userId}`)
+      .then((r) => r.json())
+      .then(setUser)
   }, [userId])
-  const initials = user ? user.name.split(' ').map((p) => p[0]).join('') : ''
-  return <div className="rounded-lg p-4">{initials} — {user?.name}</div>
+  const initials = user
+    ? user.name
+        .split(' ')
+        .map((p) => p[0])
+        .join('')
+    : ''
+  return (
+    <div className="rounded-lg p-4">
+      {initials} — {user?.name}
+    </div>
+  )
 }
 ```
 
@@ -70,8 +81,7 @@ const badge = cva('inline-flex rounded-full px-2 py-0.5 text-xs font-medium', {
 })
 
 export interface BadgeProps
-  extends VariantProps<typeof badge>,
-    React.HTMLAttributes<HTMLSpanElement> {}
+  extends VariantProps<typeof badge>, React.HTMLAttributes<HTMLSpanElement> {}
 
 export function Badge({ tone, className, ...props }: BadgeProps) {
   return <span className={cn(badge({ tone }), className)} {...props} />
@@ -85,7 +95,7 @@ New tone = new line in `variants` map, not rewrite of JSX.
 Every variant must be usable through same contract. If `<Button variant="danger">`
 suddenly required extra prop that `"primary"` didn't, callers couldn't swap
 variants freely. Keep prop shape identical across variants; vary only the
-*value*, never the *signature*.
+_value_, never the _signature_.
 
 ## I — Interface Segregation
 

@@ -73,7 +73,7 @@ Decide placement by **reason to change** (this SRP, see SOLID below):
 
 ## No code comments
 
-Write **zero comments** in code you author or edit — no `//`, no `/* */`, no JSDoc. Reason: comment = second source of truth that drift from code and signal code no explain itself. Instead make code self-documenting — rename unclear variable, extract confusing expression into well-named function, split function doing two things. Feel urge to comment *why*? That "why" usually belong in commit message or a name.
+Write **zero comments** in code you author or edit — no `//`, no `/* */`, no JSDoc. Reason: comment = second source of truth that drift from code and signal code no explain itself. Instead make code self-documenting — rename unclear variable, extract confusing expression into well-named function, split function doing two things. Feel urge to comment _why_? That "why" usually belong in commit message or a name.
 
 You see comments in some existing scaffold files (`env.ts`, `LocaleSwitcher.tsx`, `__root.tsx`). Those upstream template leftovers — treat as legacy, no replicate style, no add more. (No go delete them either unless that file your actual task; that unrelated churn.)
 
@@ -87,7 +87,7 @@ Apply SOLID to **module and dependency boundaries**, not OOP ceremony. Goal = lo
 - **I — Interface Segregation.** Keep `Props` interfaces narrow and specific. No god-props bag half callers pass `undefined` for. Split into focused components instead.
 - **D — Dependency Inversion.** Presentation depend on **injected** data and handlers (props, context), never on concrete data-fetching/storage it import direct. Pass `onSave`, `items` in — no `import { db }` into a button.
 
-**Precedence / guardrail.** SOLID here govern *where boundaries fall*, not how much code to write. Does **not** license speculative abstraction: no interface for single implementation, no DI indirection for one-off, no splitting 10-line component into five. When SOLID-by-boundary and "keep minimal" seem conflict, draw boundary clean but implement smallest thing behind it. Add seam when second real caller/case exist, not before.
+**Precedence / guardrail.** SOLID here govern _where boundaries fall_, not how much code to write. Does **not** license speculative abstraction: no interface for single implementation, no DI indirection for one-off, no splitting 10-line component into five. When SOLID-by-boundary and "keep minimal" seem conflict, draw boundary clean but implement smallest thing behind it. Add seam when second real caller/case exist, not before.
 
 ## Commands
 

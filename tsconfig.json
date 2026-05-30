@@ -1,13 +1,25 @@
 {
-  "include": ["**/*.ts", "**/*.tsx", "eslint.config.js", "prettier.config.js", "vite.config.js"],
-  
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "eslint.config.js",
+    "prettier.config.js",
+    "vite.config.js"
+  ],
+
   "compilerOptions": {
     "target": "ES2022",
     "jsx": "react-jsx",
     "module": "ESNext",
     "paths": {
       "#/*": ["./src/*"],
-      "@/*": ["./src/*"]
+      "next/navigation": ["./src/compat/next-navigation.ts"],
+      "next/link": ["./src/compat/next-link.tsx"],
+      "next/dynamic": ["./src/compat/next-dynamic.ts"],
+      "next-intl": ["./src/compat/next-intl.ts"],
+      "@/components/module/*": ["./packages/core/*"],
+      "@/*": ["./src/*"],
+      "@phutsakorn/ui": ["./packages/ui/src/index.ts"]
     },
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "types": ["vite/client"],

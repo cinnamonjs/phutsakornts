@@ -1,0 +1,31 @@
+export type {
+  BadgeOption,
+  CTAConfig,
+  CursorSectionConfig,
+  CustomSectionConfig,
+  DetailConfig,
+  DetailHeaderConfig,
+  DropdownEntry,
+  DropdownGroupConfig,
+  DropdownItemConfig,
+  DropdownVariant,
+  FieldDef,
+  FieldsSectionConfig,
+  FieldType,
+  PanelFieldDef,
+  PanelGroup,
+  SectionConfig,
+} from "@/components/module/detail-builder/types"
+export {
+  createDetail,
+  cursorSection,
+  customField,
+  customSection,
+  DetailBuilder,
+  dropdownGroup,
+  field,
+  fieldsSection,
+  panelField,
+  panelGroup,
+} from "@/components/module/detail-builder/config-builder"
+export { DetailLayout } from "@/components/module/detail-builder/detail-layout"

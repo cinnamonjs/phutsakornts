@@ -1,0 +1,695 @@
+[
+  {
+    "_name": "All Field Types — Default Layout",
+    "id": "all-fields-default",
+    "layout": {
+      "variant": "default",
+      "columns": 1,
+      "spacing": "md"
+    },
+    "sections": [
+      {
+        "id": "text-fields",
+        "title": "Text Fields",
+        "description": "Text, email, password, and textarea inputs",
+        "fields": [
+          {
+            "id": "username",
+            "type": "text",
+            "label": "Username",
+            "placeholder": "Enter username",
+            "required": true,
+            "minLength": 3,
+            "maxLength": 30,
+            "validation": [
+              { "type": "required", "message": "Username is required" },
+              { "type": "min", "value": 3, "message": "At least 3 characters" }
+            ]
+          },
+          {
+            "id": "email",
+            "type": "email",
+            "label": "Email",
+            "placeholder": "you@example.com",
+            "required": true,
+            "validation": [
+              { "type": "required" },
+              { "type": "email", "message": "Invalid email" }
+            ]
+          },
+          {
+            "id": "password",
+            "type": "password",
+            "label": "Password",
+            "placeholder": "••••••••",
+            "required": true,
+            "minLength": 8,
+            "validation": [
+              { "type": "required" },
+              { "type": "pattern", "value": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$", "message": "Must include uppercase, lowercase, and number" }
+            ]
+          },
+          {
+            "id": "bio",
+            "type": "textarea",
+            "label": "Bio",
+            "placeholder": "Tell us about yourself...",
+            "rows": 4,
+            "resize": "vertical",
+            "minLength": 0,
+            "maxLength": 500
+          }
+        ]
+      },
+      {
+        "id": "numeric-fields",
+        "title": "Numeric Fields",
+        "fields": [
+          {
+            "id": "age",
+            "type": "number",
+            "label": "Age",
+            "min": 0,
+            "max": 150,
+            "step": 1,
+            "placeholder": "25"
+          },
+          {
+            "id": "price",
+            "type": "number",
+            "label": "Price",
+            "min": 0,
+            "max": 99999,
+            "step": 0.01,
+            "precision": 2,
+            "placeholder": "0.00"
+          },
+          {
+            "id": "volume",
+            "type": "slider",
+            "label": "Volume",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "defaultValue": 50,
+            "showValue": true
+          },
+          {
+            "id": "satisfaction",
+            "type": "rating",
+            "label": "Satisfaction",
+            "min": 1,
+            "max": 5,
+            "defaultValue": 3
+          }
+        ]
+      },
+      {
+        "id": "selection-fields",
+        "title": "Selection Fields",
+        "fields": [
+          {
+            "id": "country",
+            "type": "select",
+            "label": "Country",
+            "placeholder": "Select a country",
+            "searchable": true,
+            "clearable": true,
+            "options": [
+              { "label": "United States", "value": "us" },
+              { "label": "United Kingdom", "value": "uk" },
+              { "label": "Japan", "value": "jp", "description": "East Asia" },
+              { "label": "Thailand", "value": "th", "group": "Southeast Asia" },
+              { "label": "Singapore", "value": "sg", "group": "Southeast Asia" }
+            ]
+          },
+          {
+            "id": "tags",
+            "type": "multiselect",
+            "label": "Tags",
+            "multiple": true,
+            "options": [
+              { "label": "Frontend", "value": "frontend" },
+              { "label": "Backend", "value": "backend" },
+              { "label": "DevOps", "value": "devops" },
+              { "label": "Design", "value": "design" }
+            ]
+          },
+          {
+            "id": "gender",
+            "type": "radio",
+            "label": "Gender",
+            "inline": true,
+            "options": [
+              { "label": "Male", "value": "male" },
+              { "label": "Female", "value": "female" },
+              { "label": "Other", "value": "other" }
+            ]
+          },
+          {
+            "id": "plan",
+            "type": "choice",
+            "label": "Plan",
+            "columns": 3,
+            "multiple": false,
+            "options": [
+              { "label": "Starter", "value": "starter", "description": "$9/mo" },
+              { "label": "Pro", "value": "pro", "description": "$29/mo" },
+              { "label": "Enterprise", "value": "enterprise", "description": "Custom" }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "toggle-fields",
+        "title": "Toggle Fields",
+        "fields": [
+          {
+            "id": "agree_terms",
+            "type": "checkbox",
+            "label": "I agree to the terms and conditions",
+            "required": true,
+            "validation": [{ "type": "required", "message": "You must agree" }]
+          },
+          {
+            "id": "notifications",
+            "type": "switch",
+            "label": "Enable notifications",
+            "size": "md",
+            "defaultValue": true
+          }
+        ]
+      },
+      {
+        "id": "date-fields",
+        "title": "Date Fields",
+        "fields": [
+          {
+            "id": "birthday",
+            "type": "date",
+            "label": "Birthday",
+            "format": "yyyy-MM-dd",
+            "maxDate": "2026-04-07"
+          },
+          {
+            "id": "event_datetime",
+            "type": "date",
+            "label": "Event Date & Time",
+            "showTime": true,
+            "timezone": "Asia/Bangkok"
+          },
+          {
+            "id": "booking_range",
+            "type": "date-range",
+            "label": "Booking Period",
+            "format": "yyyy-MM-dd",
+            "allowSameDay": false,
+            "enforceOrder": true,
+            "separatorLabel": "to"
+          }
+        ]
+      },
+      {
+        "id": "file-fields",
+        "title": "File Fields",
+        "fields": [
+          {
+            "id": "avatar",
+            "type": "file",
+            "label": "Avatar",
+            "accept": "image/*",
+            "multiple": false,
+            "maxSize": 5242880
+          },
+          {
+            "id": "documents",
+            "type": "file",
+            "label": "Documents",
+            "accept": ".pdf,.doc,.docx",
+            "multiple": true,
+            "maxFiles": 5,
+            "maxSize": 10485760
+          }
+        ]
+      },
+      {
+        "id": "special-fields",
+        "title": "Special Fields",
+        "fields": [
+          {
+            "id": "referral_code",
+            "type": "hidden",
+            "label": "Referral Code",
+            "defaultValue": "REF-001"
+          }
+        ]
+      }
+    ],
+    "submission": {
+      "enabled": true,
+      "submitText": "Submit",
+      "resetText": "Reset",
+      "validation": "onSubmit",
+      "expand": false,
+      "confirmBeforeSubmit": false
+    }
+  },
+  {
+    "_name": "Card Layout",
+    "id": "card-layout-form",
+    "title": "Account Settings",
+    "description": "Update your account preferences",
+    "layout": {
+      "variant": "card",
+      "columns": 1,
+      "spacing": "md"
+    },
+    "sections": [
+      {
+        "id": "profile",
+        "title": "Profile",
+        "fields": [
+          { "id": "display_name", "type": "text", "label": "Display Name", "required": true },
+          { "id": "email", "type": "email", "label": "Email", "required": true }
+        ]
+      }
+    ],
+    "submission": {
+      "enabled": true,
+      "submitText": "Save Changes"
+    }
+  },
+  {
+    "_name": "Steps Layout",
+    "id": "steps-layout-form",
+    "title": "Onboarding",
+    "layout": {
+      "variant": "steps",
+      "spacing": "lg"
+    },
+    "sections": [
+      {
+        "id": "step-personal",
+        "title": "Personal Info",
+        "description": "Basic personal details",
+        "fields": [
+          { "id": "first_name", "type": "text", "label": "First Name", "required": true },
+          { "id": "last_name", "type": "text", "label": "Last Name", "required": true },
+          { "id": "dob", "type": "date", "label": "Date of Birth" }
+        ]
+      },
+      {
+        "id": "step-contact",
+        "title": "Contact",
+        "description": "How can we reach you?",
+        "fields": [
+          { "id": "email", "type": "email", "label": "Email", "required": true },
+          { "id": "phone", "type": "text", "label": "Phone", "pattern": "^\\+?[0-9\\s-]+$" }
+        ]
+      },
+      {
+        "id": "step-preferences",
+        "title": "Preferences",
+        "description": "Customize your experience",
+        "fields": [
+          {
+            "id": "theme",
+            "type": "choice",
+            "label": "Theme",
+            "columns": 2,
+            "options": [
+              { "label": "Light", "value": "light" },
+              { "label": "Dark", "value": "dark" }
+            ]
+          },
+          { "id": "newsletter", "type": "switch", "label": "Subscribe to newsletter", "defaultValue": true }
+        ]
+      }
+    ],
+    "submission": {
+      "enabled": true,
+      "submitText": "Complete Setup",
+      "validation": "onChange"
+    }
+  },
+  {
+    "_name": "Wizard Layout",
+    "id": "wizard-layout-form",
+    "title": "Payment Setup Wizard",
+    "layout": {
+      "variant": "wizard",
+      "spacing": "lg"
+    },
+    "sections": [
+      {
+        "id": "wizard-provider",
+        "title": "Select Provider",
+        "fields": [
+          {
+            "id": "provider",
+            "type": "choice",
+            "label": "Payment Provider",
+            "columns": 2,
+            "options": [
+              { "label": "Stripe", "value": "stripe", "description": "Global payments" },
+              { "label": "Omise", "value": "omise", "description": "SEA gateway" }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "wizard-credentials",
+        "title": "API Credentials",
+        "fields": [
+          { "id": "public_key", "type": "password", "label": "Public Key", "required": true, "placeholder": "pk_live_..." },
+          { "id": "secret_key", "type": "password", "label": "Secret Key", "required": true, "placeholder": "sk_live_..." }
+        ]
+      },
+      {
+        "id": "wizard-confirm",
+        "title": "Review & Confirm",
+        "fields": [
+          { "id": "confirm", "type": "checkbox", "label": "I confirm the credentials are correct", "required": true }
+        ]
+      }
+    ],
+    "submission": {
+      "enabled": true,
+      "submitText": "Connect Provider",
+      "confirmBeforeSubmit": true,
+      "confirmMessage": "Are you sure you want to connect this provider?",
+      "loadingText": "Connecting..."
+    }
+  },
+  {
+    "_name": "Multi-Column Grid Layout",
+    "id": "grid-layout-form",
+    "layout": {
+      "variant": "default",
+      "columns": 2,
+      "spacing": "sm"
+    },
+    "sections": [
+      {
+        "id": "address",
+        "title": "Address",
+        "fields": [
+          { "id": "street", "type": "text", "label": "Street", "grid": { "colSpan": 2 } },
+          { "id": "city", "type": "text", "label": "City" },
+          { "id": "state", "type": "text", "label": "State" },
+          { "id": "zip", "type": "text", "label": "ZIP Code" },
+          {
+            "id": "country",
+            "type": "select",
+            "label": "Country",
+            "options": [
+              { "label": "United States", "value": "us" },
+              { "label": "Canada", "value": "ca" }
+            ]
+          }
+        ]
+      }
+    ],
+    "submission": {
+      "enabled": true,
+      "submitText": "Save Address",
+      "expand": true
+    }
+  },
+  {
+    "_name": "Collapsible Sections",
+    "id": "collapsible-sections-form",
+    "layout": {
+      "variant": "default",
+      "spacing": "lg"
+    },
+    "sections": [
+      {
+        "id": "basic",
+        "title": "Basic Information",
+        "collapsible": true,
+        "defaultCollapsed": false,
+        "fields": [
+          { "id": "name", "type": "text", "label": "Name", "required": true },
+          { "id": "email", "type": "email", "label": "Email", "required": true }
+        ]
+      },
+      {
+        "id": "advanced",
+        "title": "Advanced Settings",
+        "description": "Optional configuration",
+        "collapsible": true,
+        "defaultCollapsed": true,
+        "fields": [
+          { "id": "api_url", "type": "text", "label": "API URL", "placeholder": "https://api.example.com", "validation": [{ "type": "url" }] },
+          { "id": "timeout", "type": "number", "label": "Timeout (ms)", "min": 100, "max": 30000, "step": 100, "defaultValue": 5000 },
+          { "id": "debug", "type": "switch", "label": "Debug Mode", "defaultValue": false }
+        ]
+      }
+    ],
+    "submission": {
+      "enabled": true,
+      "submitText": "Save"
+    }
+  },
+  {
+    "_name": "Conditional Logic",
+    "id": "conditional-form",
+    "layout": {
+      "variant": "default",
+      "spacing": "md"
+    },
+    "sections": [
+      {
+        "id": "main",
+        "fields": [
+          {
+            "id": "account_type",
+            "type": "radio",
+            "label": "Account Type",
+            "inline": true,
+            "options": [
+              { "label": "Personal", "value": "personal" },
+              { "label": "Business", "value": "business" }
+            ]
+          },
+          {
+            "id": "company_name",
+            "type": "text",
+            "label": "Company Name",
+            "required": true,
+            "conditional": [
+              { "field": "account_type", "operator": "equals", "value": "business", "action": "show" }
+            ]
+          },
+          {
+            "id": "tax_id",
+            "type": "text",
+            "label": "Tax ID",
+            "conditional": [
+              { "field": "account_type", "operator": "equals", "value": "business", "action": "show" }
+            ]
+          },
+          {
+            "id": "has_referral",
+            "type": "checkbox",
+            "label": "I have a referral code"
+          },
+          {
+            "id": "referral_code",
+            "type": "text",
+            "label": "Referral Code",
+            "placeholder": "REF-XXXX",
+            "conditional": [
+              { "field": "has_referral", "operator": "equals", "value": true, "action": "show" }
+            ]
+          }
+        ]
+      }
+    ],
+    "submission": {
+      "enabled": true,
+      "submitText": "Create Account"
+    }
+  },
+  {
+    "_name": "Grouped Fields",
+    "id": "grouped-fields-form",
+    "layout": {
+      "variant": "default",
+      "spacing": "md"
+    },
+    "sections": [
+      {
+        "id": "contacts",
+        "title": "Contact Information",
+        "fields": [
+          {
+            "id": "primary_contact",
+            "type": "group",
+            "label": "Primary Contact",
+            "layout": {
+              "columns": 2,
+              "spacing": "sm"
+            },
+            "children": [
+              { "id": "primary_first", "type": "text", "label": "First Name", "required": true },
+              { "id": "primary_last", "type": "text", "label": "Last Name", "required": true },
+              { "id": "primary_email", "type": "email", "label": "Email", "required": true },
+              { "id": "primary_phone", "type": "text", "label": "Phone" }
+            ]
+          },
+          {
+            "id": "secondary_contact",
+            "type": "group",
+            "label": "Secondary Contact",
+            "layout": {
+              "columns": 2,
+              "spacing": "sm"
+            },
+            "children": [
+              { "id": "secondary_first", "type": "text", "label": "First Name" },
+              { "id": "secondary_last", "type": "text", "label": "Last Name" },
+              { "id": "secondary_email", "type": "email", "label": "Email" },
+              { "id": "secondary_phone", "type": "text", "label": "Phone" }
+            ]
+          }
+        ]
+      }
+    ],
+    "submission": {
+      "enabled": true,
+      "submitText": "Save Contacts"
+    }
+  },
+  {
+    "_name": "Themed Form",
+    "id": "themed-form",
+    "title": "Custom Themed Form",
+    "layout": {
+      "variant": "card",
+      "spacing": "md"
+    },
+    "theme": {
+      "colors": {
+        "primary": "#6366f1",
+        "destructive": "#ef4444",
+        "success": "#22c55e"
+      },
+      "spacing": {
+        "sm": "0.5rem",
+        "md": "1rem",
+        "lg": "1.5rem"
+      },
+      "borderRadius": "0.75rem",
+      "submissionLayout": "vertical"
+    },
+    "sections": [
+      {
+        "id": "feedback",
+        "fields": [
+          { "id": "rating", "type": "rating", "label": "How was your experience?", "min": 1, "max": 5 },
+          { "id": "comment", "type": "textarea", "label": "Comments", "rows": 3, "placeholder": "Share your feedback..." },
+          { "id": "recommend", "type": "switch", "label": "Would you recommend us?" }
+        ]
+      }
+    ],
+    "submission": {
+      "enabled": true,
+      "submitText": "Send Feedback",
+      "expand": true,
+      "validation": "onBlur"
+    }
+  },
+  {
+    "_name": "All Spacing Sizes",
+    "id": "spacing-demo",
+    "layout": {
+      "variant": "default",
+      "columns": 1,
+      "spacing": "xl"
+    },
+    "sections": [
+      {
+        "id": "xs-section",
+        "title": "XS Spacing (space-y-3)",
+        "fields": [
+          { "id": "xs_a", "type": "text", "label": "Field A" },
+          { "id": "xs_b", "type": "text", "label": "Field B" }
+        ]
+      },
+      {
+        "id": "sm-section",
+        "title": "SM Spacing (space-y-5)",
+        "fields": [
+          { "id": "sm_a", "type": "text", "label": "Field A" },
+          { "id": "sm_b", "type": "text", "label": "Field B" }
+        ]
+      }
+    ],
+    "submission": {
+      "enabled": true,
+      "submitText": "Done"
+    }
+  },
+  {
+    "_name": "Submission Variants",
+    "id": "submission-variants",
+    "layout": { "variant": "default" },
+    "sections": [
+      {
+        "id": "data",
+        "fields": [
+          { "id": "name", "type": "text", "label": "Name", "required": true }
+        ]
+      }
+    ],
+    "submission": {
+      "enabled": true,
+      "submitText": "Save",
+      "resetText": "Clear",
+      "expand": true,
+      "confirmBeforeSubmit": true,
+      "confirmMessage": "Are you sure?",
+      "loadingText": "Saving...",
+      "validation": "onBlur"
+    }
+  },
+  {
+    "_name": "Conditional Section Visibility",
+    "id": "conditional-sections-form",
+    "layout": { "variant": "default", "spacing": "md" },
+    "sections": [
+      {
+        "id": "role-select",
+        "fields": [
+          {
+            "id": "role",
+            "type": "select",
+            "label": "Role",
+            "options": [
+              { "label": "User", "value": "user" },
+              { "label": "Admin", "value": "admin" }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "admin-section",
+        "title": "Admin Settings",
+        "conditional": [
+          { "field": "role", "operator": "equals", "value": "admin", "action": "show" }
+        ],
+        "fields": [
+          { "id": "permissions", "type": "multiselect", "label": "Permissions", "options": [
+            { "label": "Read", "value": "read" },
+            { "label": "Write", "value": "write" },
+            { "label": "Delete", "value": "delete" }
+          ]},
+          { "id": "super_admin", "type": "switch", "label": "Super Admin" }
+        ]
+      }
+    ],
+    "submission": { "enabled": true, "submitText": "Save" }
+  }
+]
