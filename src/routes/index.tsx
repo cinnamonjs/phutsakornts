@@ -2,7 +2,7 @@ import { Link, createFileRoute } from '@tanstack/react-router'
 
 import { cn } from '#/lib/utils'
 import { m } from '#/paraglide/messages'
-import { getLocale } from '#/paraglide/runtime'
+import { getLocale, setLocale } from '#/paraglide/runtime'
 import { HandwriteText } from '#/components/ui/hand-write.tsx';
 import { useLayoutEffect, useRef, useState } from 'react';
 import { generateGoldenSquare, type GoldenSquare } from '#/components/ui/generate-golden.tsx';
@@ -62,12 +62,14 @@ function Home() {
             <span className="kicker flex items-center gap-2.5">
               <span
                 className={cn(locale === 'en' ? 'text-ink' : 'text-ink-muted')}
+                onClick={() => setLocale('en')}
               >
                 EN
               </span>
               <span className="text-rule-strong">/</span>
               <span
                 className={cn(locale === 'th' ? 'text-ink' : 'text-ink-muted')}
+                onClick={() => setLocale('th')}
               >
                 TH
               </span>

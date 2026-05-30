@@ -23,7 +23,6 @@ interface HandwrittenTextProps {
 
 interface PathData {
   d: string
-  width: number
 }
 
 export function HandwriteText({
@@ -55,40 +54,22 @@ export function HandwriteText({
         const font = opentypeParse(buffer)
         if (cancelled) return
 
-        const glyphPaths: PathData[] = []
-        let x = 0
         const scale = fontSize / font.unitsPerEm
 
-        // Get font metrics
         const ascender = font.ascender * scale
         const descender = font.descender * scale
         const height = ascender - descender
 
-        // Convert each character to path
-        for (let i = 0; i < text.length; i++) {
-          const char = text[i]
-          const glyph = font.charToGlyph(char)
-
-          if (glyph?.path) {
-            const path = glyph.getPath(x, ascender, fontSize)
-            const pathData = path.toPathData(2)
-
-            if (pathData && pathData.length > 0) {
-              glyphPaths.push({
-                d: pathData,
-                width: (glyph.advanceWidth || 0) * scale
-              })
-            }
-
-            x += (glyph.advanceWidth || 0) * scale
-          }
-        }
+        const glyphPaths: PathData[] = font
+          .getPaths(text, 0, ascender, fontSize)
+          .map((glyphPath) => glyphPath.toPathData(2))
+          .filter((d) => d.length > 0)
+          .map((d) => ({ d }))
 
         if (cancelled) return
 
-        // Add padding
         const padding = fontSize * 0.15
-        const totalWidth = x + padding * 2
+        const totalWidth = font.getAdvanceWidth(text, fontSize) + padding * 2
         const totalHeight = height + padding * 2
 
         setViewBox(`${-padding} ${-padding} ${totalWidth} ${totalHeight}`)
