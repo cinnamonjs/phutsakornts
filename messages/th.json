@@ -1,0 +1,13 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "home_page": "หน้าแรก",
+  "about_page": "เกี่ยวกับเรา",
+  "example_message": "ยินดีต้อนรับสู่แอป i18n ของคุณ",
+  "language_label": "ภาษา",
+  "current_locale": "ภาษาปัจจุบัน: {locale}",
+  "learn_router": "เรียนรู้ Paraglide JS",
+  "home_kicker": "ตัวอย่างตัวอักษร",
+  "home_headline": "ความสงบ",
+  "home_subline": "พื้นที่เงียบสงบ จัดวางด้วยตัวอักษรและที่ว่าง",
+  "home_index": "ดัชนี 01"
+}
