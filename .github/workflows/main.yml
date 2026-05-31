@@ -7,9 +7,14 @@ on:
 
 jobs:
   deploy:
+    
     runs-on: self-hosted
-
+    
     steps:
+      - name: Setup Bun Environment
+        uses: oven-sh/setup-bun@v2
+        with:
+          version: latest
+        
       - uses: actions/checkout@v4
-
       - run: docker-compose -f docker-compose.prod.yaml up -d --build
