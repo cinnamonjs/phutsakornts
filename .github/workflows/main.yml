@@ -11,10 +11,18 @@ jobs:
     runs-on: self-hosted
     
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          clean: true
+
       - name: Setup Bun Environment
         uses: oven-sh/setup-bun@v2
         with:
           version: latest
+          
+      - name: Install Release
+        run: bun install
         
-      - uses: actions/checkout@v4
-      - run: docker-compose -f docker-compose.prod.yaml up -d --build
+      - name: Build and Deploy Containers
+        run: docker-compose -f docker-compose.prod.yaml up -d --build
