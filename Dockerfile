@@ -23,7 +23,7 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
-COPY --from=builder /app/.dist ./.dist
+COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package.json ./package.json
 
 EXPOSE 3000
