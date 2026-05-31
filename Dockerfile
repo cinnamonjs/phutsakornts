@@ -25,7 +25,7 @@ ENV NODE_ENV=production
 
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package.json ./package.json
-COPY --form=builder /app/server.ts ./server.ts
+COPY --from=builder /app/server.ts ./server.ts
 
 EXPOSE 3000
 
