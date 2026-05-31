@@ -3,9 +3,12 @@ FROM oven/bun:latest
 WORKDIR /app
 
 COPY package.json bun.lock ./
+COPY packages/core/package.json ./packages/core/package.json
+COPY packages/ui/package.json ./packages/ui/package.json
+COPY . .
 
 RUN bun install
 
 EXPOSE 3000
 
-CMD ["bun", "run", "dev"]
+CMD ["bun", "run", "dev", "--host", "0.0.0.0"]
