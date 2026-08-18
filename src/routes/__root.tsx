@@ -35,8 +35,12 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'Phutsakorn',
       },
+      {
+        name: "description",
+        content: "My name is phutsakorn thunwattanakul, i am a software engineering that focused on frontend and product design..."
+      }
     ],
     links: [
       {
