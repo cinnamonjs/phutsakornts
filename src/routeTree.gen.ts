@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LocaleRouteImport } from './routes/$locale'
 import { Route as DocsRouteRouteImport } from './routes/docs/route'
 import { Route as DocsIndexRouteImport } from './routes/docs/index'
 import { Route as DocsSlugRouteImport } from './routes/docs/$slug'
@@ -17,6 +18,11 @@ import { Route as DocsSlugRouteImport } from './routes/docs/$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocaleRoute = LocaleRouteImport.update({
+  id: '/$locale',
+  path: '/$locale',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DocsRouteRoute = DocsRouteRouteImport.update({
@@ -38,11 +44,13 @@ const DocsSlugRoute = DocsSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/docs': typeof DocsRouteRouteWithChildren
+  '/$locale': typeof LocaleRoute
   '/docs/$slug': typeof DocsSlugRoute
   '/docs/': typeof DocsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$locale': typeof LocaleRoute
   '/docs/$slug': typeof DocsSlugRoute
   '/docs': typeof DocsIndexRoute
 }
@@ -50,20 +58,22 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/docs': typeof DocsRouteRouteWithChildren
+  '/$locale': typeof LocaleRoute
   '/docs/$slug': typeof DocsSlugRoute
   '/docs/': typeof DocsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/docs' | '/docs/$slug' | '/docs/'
+  fullPaths: '/' | '/docs' | '/$locale' | '/docs/$slug' | '/docs/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/docs/$slug' | '/docs'
-  id: '__root__' | '/' | '/docs' | '/docs/$slug' | '/docs/'
+  to: '/' | '/$locale' | '/docs/$slug' | '/docs'
+  id: '__root__' | '/' | '/docs' | '/$locale' | '/docs/$slug' | '/docs/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DocsRouteRoute: typeof DocsRouteRouteWithChildren
+  LocaleRoute: typeof LocaleRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -73,6 +83,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$locale': {
+      id: '/$locale'
+      path: '/$locale'
+      fullPath: '/$locale'
+      preLoaderRoute: typeof LocaleRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/docs': {
@@ -116,6 +133,7 @@ const DocsRouteRouteWithChildren = DocsRouteRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DocsRouteRoute: DocsRouteRouteWithChildren,
+  LocaleRoute: LocaleRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

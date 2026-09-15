@@ -14,11 +14,11 @@
 
 ### Full-view comparison
 
-The first viewport preserves the supplied flora background, compact glass island, centered Playwrite IE headline, Sora description, and GitHub action. The full sequence now runs inside a short 200vh sticky scene: `background.png` stays pinned beneath the composition, `background-2.png` rises from below, and Index 02 starts rising at 50% scroll. Motion is weighted 30% faster before the midpoint and 30% slower afterward. The Index 01 headline group begins its small upward fade at 25%, while the navbar remains steady; the sequence ends on a full-screen Index 02.
+The first viewport preserves the supplied flora background, compact glass island, centered Playwrite IE headline, Sora description, and GitHub action. The full sequence now runs inside a short 200vh sticky scene: `background.png` moves only 20px from 10% to 100% scroll beneath the composition, `background-2.png` rises from below, and Index 02 starts rising at 50% scroll. Motion is weighted 30% faster before the midpoint and 30% slower afterward. The Index 01 headline group begins its small upward fade at 25%, while the navbar remains steady; the sequence ends on a full-screen Index 02.
 
 ### Focused region comparison
 
-The navbar keeps the compact island silhouette with no visible outer border, an 18px radius, translucent forest tint, backdrop blur, CSS-only grain, and a restrained upper-right highlight. The dark profile keeps a legible two-column hierarchy, visible forest detail, thin rules, and a high-contrast GitHub action.
+The navbar keeps the compact island silhouette with no visible outer border, an 18px radius, translucent forest tint, backdrop blur, CSS-only grain, and a restrained upper-right highlight. Index 01 also has a looping CSS/DOM mist layer; it does not capture or redraw HTML in a canvas. The dark profile keeps a legible two-column hierarchy, visible forest detail, thin rules, and a high-contrast GitHub action.
 
 ## Required fidelity surfaces
 
@@ -31,7 +31,7 @@ The navbar keeps the compact island silhouette with no visible outer border, an 
 ## Interaction checks
 
 - The hero headline visibly draws even while the preview browser reports `prefers-reduced-motion: reduce`, and resolves to the complete title.
-- From 0–50%, Index 01 remains pinned and its background does not move while `background-2.png` rises from the bottom beneath the foreground copy.
+- From 0–10%, Index 01 remains still. From 10–100%, its main background moves upward by only 20px while `background-2.png` rises from the bottom beneath the foreground copy.
 - At 25%, the Index 01 headline group begins shifting upward by 48px and fading without moving the navbar. At 50%, Index 02 begins rising from the bottom while `background-2.png` continues upward behind it; after 64%, the original background starts its upward fade.
 - At 100%, Index 02 fills the viewport over a solid `#04110f` surface.
 - “Scroll to explore” reaches `#about` and the dark profile is fully readable at that anchor.
@@ -56,6 +56,7 @@ No actionable P0, P1, or P2 visual findings remain. The existing TanStack root-r
 - [x] Tegaki headline no longer disappears.
 - [x] Controlled Tegaki timeline is visibly animated in the current preview.
 - [x] Daylight hero and glass island are preserved.
+- [x] Index 01 cloud mist loops as a CSS/DOM overlay without HTML-in-canvas.
 - [x] Index 01 headline, description, and CTA participate in the parallax transition.
 - [x] User-supplied `background-2.png` rises from the bottom while the original background remains pinned underneath.
 - [x] Index 02 begins rising at 50% while `background-2.png` continues moving.

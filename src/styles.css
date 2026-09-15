@@ -165,6 +165,42 @@ code {
   }
 }
 
+@keyframes cloud-drift {
+  0% {
+    transform: translate3d(-8%, 3%, 0) scale(0.94);
+  }
+  50% {
+    transform: translate3d(6%, -2%, 0) scale(1.04);
+  }
+  100% {
+    transform: translate3d(14%, 4%, 0) scale(0.98);
+  }
+}
+
+@keyframes cloud-drift-reverse {
+  0% {
+    transform: translate3d(10%, -3%, 0) scale(1.04);
+  }
+  50% {
+    transform: translate3d(-4%, 4%, 0) scale(0.94);
+  }
+  100% {
+    transform: translate3d(-14%, -1%, 0) scale(1.02);
+  }
+}
+
+@keyframes cloud-drift-low {
+  0% {
+    transform: translate3d(-4%, 5%, 0) scale(0.96);
+  }
+  50% {
+    transform: translate3d(8%, -3%, 0) scale(1.06);
+  }
+  100% {
+    transform: translate3d(18%, 2%, 0) scale(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     animation: none;
