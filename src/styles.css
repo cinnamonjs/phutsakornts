@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;700&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;700&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,700;0,800;1,400&family=Playwrite+IE:wght@100..400&family=Sora:wght@400;500;600;700&display=swap');
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
@@ -65,6 +65,8 @@
 
 @theme inline {
   --font-sans: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Playwrite IE', 'Segoe Print', cursive;
+  --font-sora: 'Sora', ui-sans-serif, system-ui, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -101,6 +103,10 @@ body,
   min-height: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: var(--font-sans);
@@ -114,11 +120,6 @@ body {
 :lang(th) {
   font-family:
     'Anuphan', 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
 }
 
 code {
@@ -173,6 +174,10 @@ code {
 @layer base {
   * {
     @apply border-border outline-ring/50;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
   }
   body {
     background-color: var(--background);

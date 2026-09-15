@@ -1,8 +1,9 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { parse as opentypeParse } from "opentype.js"
 import { useEffect, useId, useRef, useState } from "react"
+
+type OpenTypeParse = typeof import("opentype.js")["parse"]
 
 interface HandwrittenTextProps {
   text: string
@@ -48,6 +49,13 @@ export function HandwriteText({
 
     async function loadFont() {
       try {
+        const opentypeModule = (await import("opentype.js")) as unknown as {
+          parse?: OpenTypeParse
+          default?: { parse: OpenTypeParse }
+        }
+        const opentypeParse = opentypeModule.parse ?? opentypeModule.default?.parse
+        if (!opentypeParse) throw new Error("OpenType parser is unavailable")
+
         const response = await fetch(fontUrl)
         if (!response.ok) throw new Error(`Font fetch failed: ${response.status}`)
         const buffer = await response.arrayBuffer()

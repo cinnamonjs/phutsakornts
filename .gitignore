@@ -6,7 +6,6 @@ node_modules/
 /dist/
 /build/
 /.cache/
-
 .env
 .env.local
 .env.development.local
@@ -14,6 +13,7 @@ node_modules/
 .env.production.local
 *.pem
 
+.pnpm-store
 .DS_Store
 Thumbs.db
 .vscode/
