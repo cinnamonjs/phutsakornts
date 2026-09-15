@@ -14,7 +14,7 @@
 
 ### Full-view comparison
 
-The first viewport preserves the supplied flora background, compact glass island, centered Playwrite IE headline, Sora description, and GitHub action. The full sequence now runs inside one 400vh sticky scene: `background.png` stays pinned beneath the composition, `background-2.png` rises from below, and Index 02 starts rising at 50% scroll. During the late phase, the original background fades and shifts upward while the Index 01 content makes a small upward exit; the sequence ends on a full-screen Index 02.
+The first viewport preserves the supplied flora background, compact glass island, centered Playwrite IE headline, Sora description, and GitHub action. The full sequence now runs inside a short 200vh sticky scene: `background.png` stays pinned beneath the composition, `background-2.png` rises from below, and Index 02 starts rising at 50% scroll. Motion is weighted 30% faster before the midpoint and 30% slower afterward. The Index 01 headline group begins its small upward fade at 25%, while the navbar remains steady; the sequence ends on a full-screen Index 02.
 
 ### Focused region comparison
 
@@ -32,7 +32,7 @@ The navbar keeps the compact island silhouette with no visible outer border, an 
 
 - The hero headline visibly draws even while the preview browser reports `prefers-reduced-motion: reduce`, and resolves to the complete title.
 - From 0–50%, Index 01 remains pinned and its background does not move while `background-2.png` rises from the bottom beneath the foreground copy.
-- At 50%, Index 02 begins rising from the bottom. `background-2.png` continues upward behind it; after 58%, the Index 01 copy shifts upward by 48px and fades, and after 64% the original background starts its upward fade.
+- At 25%, the Index 01 headline group begins shifting upward by 48px and fading without moving the navbar. At 50%, Index 02 begins rising from the bottom while `background-2.png` continues upward behind it; after 64%, the original background starts its upward fade.
 - At 100%, Index 02 fills the viewport over a solid `#04110f` surface.
 - “Scroll to explore” reaches `#about` and the dark profile is fully readable at that anchor.
 - Both GitHub actions point to `https://github.com/cinnamonjs/phutsakornts` in a new tab.

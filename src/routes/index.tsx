@@ -9,18 +9,19 @@ import { useEffect, useRef, useState, type RefObject } from 'react'
 
 export const Route = createFileRoute('/')({ component: Home })
 
-const GITHUB_URL = 'https://github.com/cinnamonjs/phutsakornts'
+const GITHUB_URL = 'https://github.com/cinnamonjs'
 
 function Home() {
   const locale = getLocale()
   const storyRef = useRef<HTMLElement>(null)
-  const progress = useScrollProgress(storyRef)
+  const rawProgress = useScrollProgress(storyRef)
+  const progress = paceScroll(rawProgress)
 
   const backgroundTwoProgress = range(progress, 0.06, 0.92)
-  const indexTwoProgress = range(progress, 0.5, 1)
-  const heroExitProgress = range(progress, 0.58, 0.86)
-  const mainBackgroundExitProgress = range(progress, 0.64, 0.9)
-  const indexTwoContentProgress = range(progress, 0.58, 0.82)
+  const indexTwoProgress = range(rawProgress, 0.5, 1)
+  const heroExitProgress = range(rawProgress, 0.25, 0.72)
+  const mainBackgroundExitProgress = range(rawProgress, 0.64, 0.9)
+  const indexTwoContentProgress = range(rawProgress, 0.58, 0.82)
   const backgroundTwoY = (1 - easeInOut(backgroundTwoProgress)) * 100
   const indexTwoY = (1 - easeInOut(indexTwoProgress)) * 100
 
@@ -28,7 +29,7 @@ function Home() {
     <main className="relative min-h-screen overflow-x-clip bg-[#04110f] text-paper">
       <section
         ref={storyRef}
-        className="relative h-[400vh]"
+        className="relative h-[240vh]"
         aria-label="Scroll from Index 01 to Index 02"
       >
         <div
@@ -69,10 +70,7 @@ function Home() {
             }}
           />
 
-          <div
-            className="absolute inset-0 z-10 mx-auto flex w-full flex-col px-6 will-change-transform sm:px-10"
-            style={{ opacity: 1 - heroExitProgress }}
-          >
+          <div className="absolute inset-0 z-10 mx-auto flex w-full flex-col px-6 will-change-transform sm:px-10">
             <header
               className={cn(
                 'reveal relative z-10 isolate mt-4 flex min-h-10 items-center justify-between overflow-hidden rounded-[1.15rem] bg-[rgba(16,33,23,0.52)] py-0.5 pl-4 pr-1.5 font-sora shadow-[0_1rem_2rem_rgba(3,18,10,0.25),inset_0_1px_0_rgba(255,255,255,0.2),inset_0_-1px_0_rgba(0,0,0,0.45)] backdrop-blur-xl backdrop-saturate-150',
@@ -137,6 +135,7 @@ function Home() {
               className="relative flex flex-1 items-center justify-center px-2 py-20 text-center will-change-transform sm:py-28"
               style={{
                 transform: `translate3d(0, ${-heroExitProgress * 48}px, 0)`,
+                opacity: 1 - heroExitProgress,
               }}
             >
               <div
@@ -191,14 +190,14 @@ function Home() {
             }}
           >
             <div
-              className="mx-auto flex min-h-screen w-full max-w-[96rem] flex-col justify-between px-6 py-8 will-change-transform sm:px-10 sm:py-10 lg:px-16"
+              className="mx-auto flex min-h-screen w-full max-w-384 flex-col justify-between px-6 py-8 will-change-transform sm:px-10 sm:py-10 lg:px-16"
               style={{
                 transform: `translate3d(0, ${(1 - indexTwoContentProgress) * 24}px, 0)`,
                 opacity: 0.35 + indexTwoContentProgress * 0.65,
               }}
             >
               <div className="flex items-center justify-between border-b border-white/15 pb-5 font-sora text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-white/55">
-                <span>Index 02 / After dark</span>
+                <span>Index 02</span>
                 <span>Personal profile</span>
               </div>
 
@@ -266,6 +265,10 @@ function Home() {
 
 function range(value: number, start: number, end: number) {
   return Math.min(1, Math.max(0, (value - start) / (end - start)))
+}
+
+function paceScroll(value: number) {
+  return value <= 0.5 ? value * 1.3 : 0.65 + (value - 0.5) * 0.7
 }
 
 function easeInOut(value: number) {
